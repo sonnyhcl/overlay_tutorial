@@ -1,0 +1,6 @@
+.Xil
+overlays/tutorial_1
+overlays/tutorial_2
+solution*
+vivado_hls.app
+vivado_hls.log
