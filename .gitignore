@@ -4,3 +4,4 @@ overlays/tutorial_2
 solution*
 vivado_hls.app
 vivado_hls.log
+.ipynb_checkpoints
