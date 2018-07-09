@@ -2,7 +2,6 @@ cd ip
 foreach script [glob */script.tcl] { exec vivado_hls -f $script }
 
 cd ..
-cd overlays
 
 source build_scalar_add.tcl
 close_project
