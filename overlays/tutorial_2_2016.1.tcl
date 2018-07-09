@@ -122,7 +122,7 @@ proc create_hier_cell_const_multiply { parentCell nameHier } {
   variable script_folder
 
   if { $parentCell eq "" || $nameHier eq "" } {
-     catch {common::send_msg_id "BD_TCL-102" "ERROR" create_hier_cell_const_multiply() - Empty argument(s)!"}
+     catch {common::send_msg_id "BD_TCL-102" "ERROR" "create_hier_cell_const_multiply() - Empty argument(s)!"}
      return
   }
 

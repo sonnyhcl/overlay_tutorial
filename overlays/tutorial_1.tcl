@@ -34,21 +34,16 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 # START
 ################################################################
 
-# To test this script, run the following commands from Vivado Tcl console:
-# source tutorial_1_script.tcl
-
-# If there is no project opened, this script will create a
-# project, but make sure you do not have an existing project
-# <./tutorial_1 /tutorial_1.xpr> in the current working folder.
-
 set list_projs [get_projects -quiet]
 if { $list_projs eq "" } {
    create_project tutorial_1  tutorial_1  -part xc7z020clg400-1
+   set_property BOARD_PART digilentinc.com:arty-z7-20:part0:1.0 [current_project]
 }
 
+set_property "ip_repo_paths" [file normalize [pwd]/../ip] [get_filesets sources_1]
+update_ip_catalog
 
 # CHANGE DESIGN NAME HERE
-variable design_name
 set design_name tutorial_1
 
 # If you do not already have an existing IP Integrator design open,
@@ -161,7 +156,6 @@ if { $bCheckIPsPassed != 1 } {
 proc create_root_design { parentCell } {
 
   variable script_folder
-  variable design_name
 
   if { $parentCell eq "" } {
      set parentCell [get_bd_cells /]
@@ -1028,7 +1022,3 @@ proc create_root_design { parentCell } {
 ##################################################################
 
 create_root_design ""
-
-
-common::send_msg_id "BD_TCL-1000" "WARNING" "This Tcl script was generated from a block design that has not been validated. It is possible that design <$design_name> may result in errors during validation."
-
